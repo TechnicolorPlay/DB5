@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VSTheme.h"
 
 @interface UIViewController (VSTheme)
+
+@property(nonatomic, strong, readwrite) VSTheme* theme;
 
 @end
