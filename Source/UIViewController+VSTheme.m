@@ -34,4 +34,74 @@ static char const * const kVSThemeKey = "kVSTheme";
     return theme;
 }
 
+- (BOOL)themeBoolForKey:(NSString *)key
+{
+    return [self.theme boolForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (NSString *)themeStringForKey:(NSString *)key
+{
+    return [self.theme stringForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (NSInteger)themeIntegerForKey:(NSString *)key
+{
+    return [self.theme integerForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (CGFloat)themeFloatForKey:(NSString *)key
+{
+    return [self.theme floatForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (UIImage *)themeImageForKey:(NSString *)key
+{
+    return [self.theme imageForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (UIColor *)themeColorForKey:(NSString *)key
+{
+    return [self.theme colorForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (UIEdgeInsets)themeEdgeInsetsForKey:(NSString *)key
+{
+    return [self.theme edgeInsetsForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (UIFont *)themeFontForKey:(NSString *)key
+{
+    return [self.theme fontForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (CGPoint)themePointForKey:(NSString *)key
+{
+    return [self.theme pointForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (CGSize)themeSizeForKey:(NSString *)key
+{
+    return [self.theme sizeForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (NSTimeInterval)themeTimeIntervalForKey:(NSString *)key
+{
+    return [self.theme timeIntervalForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (UIViewAnimationOptions)themeCurveForKey:(NSString *)key
+{
+    return [self.theme curveForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (VSAnimationSpecifier *)themeAnimationSpecifierForKey:(NSString *)key
+{
+    return [self.theme animationSpecifierForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
+- (VSTextCaseTransform)themeTextCaseTransformForKey:(NSString *)key
+{
+    return [self.theme textCaseTransformForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
+}
+
 @end

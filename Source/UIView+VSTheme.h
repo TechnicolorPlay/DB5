@@ -13,4 +13,19 @@
 
 @property(nonatomic, strong, readwrite) VSTheme* theme;
 
+- (BOOL)themeBoolForKey:(NSString *)key;
+- (NSString *)themeStringForKey:(NSString *)key;
+- (NSInteger)themeIntegerForKey:(NSString *)key;
+- (CGFloat)themeFloatForKey:(NSString *)key;
+- (UIImage *)themeImageForKey:(NSString *)key;
+- (UIColor *)themeColorForKey:(NSString *)key;
+- (UIEdgeInsets)themeEdgeInsetsForKey:(NSString *)key;
+- (UIFont *)themeFontForKey:(NSString *)key;
+- (CGPoint)themePointForKey:(NSString *)key;
+- (CGSize)themeSizeForKey:(NSString *)key;
+- (NSTimeInterval)themeTimeIntervalForKey:(NSString *)key;
+- (UIViewAnimationOptions)themeCurveForKey:(NSString *)key;
+- (VSAnimationSpecifier *)themeAnimationSpecifierForKey:(NSString *)key;
+- (VSTextCaseTransform)themeTextCaseTransformForKey:(NSString *)key;
+
 @end
