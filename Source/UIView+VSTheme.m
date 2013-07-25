@@ -35,74 +35,194 @@ static char const * const kVSThemeKey = "kVSTheme";
     return theme;
 }
 
+- (id)themeValueForKey:(NSString *)key
+{
+    Class class = [self class];
+    
+    while (class != [NSObject class])
+    {
+        id value = [self.theme objectForKey:[NSStringFromClass(class) stringByAppendingFormat:@".%@", key]];
+        if (value)
+        {
+            return value;
+        }
+        
+        class = [class superclass];
+    }
+    
+    return nil;
+}
+
 - (BOOL)themeBoolForKey:(NSString *)key
 {
-    return [self.theme boolForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    return [[self themeValueForKey:key] boolValue];
 }
 
 - (NSString *)themeStringForKey:(NSString *)key
 {
-    return [self.theme stringForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    return (NSString *)[self themeValueForKey:key];
 }
 
 - (NSInteger)themeIntegerForKey:(NSString *)key
 {
-    return [self.theme integerForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    return [[self themeValueForKey:key] integerValue];
 }
 
 - (CGFloat)themeFloatForKey:(NSString *)key
 {
-    return [self.theme floatForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    return [[self themeValueForKey:key] floatValue];
 }
 
 - (UIImage *)themeImageForKey:(NSString *)key
 {
-    return [self.theme imageForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    Class class = [self class];
+    
+    while (class != [NSObject class])
+    {
+        UIImage *image = [self.theme imageForKey:[NSStringFromClass(class) stringByAppendingFormat:@".%@", key]];
+        if (image)
+        {
+            return image;
+        }
+        
+        class = [class superclass];
+    }
+    
+    return nil;
 }
 
 - (UIColor *)themeColorForKey:(NSString *)key
 {
-    return [self.theme colorForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    Class class = [self class];
+    
+    while (class != [NSObject class])
+    {
+        UIColor *color = [self.theme colorForKey:[NSStringFromClass(class) stringByAppendingFormat:@".%@", key]];
+        if (color)
+        {
+            return color;
+        }
+        
+        class = [class superclass];
+    }
+    
+    return nil;
 }
 
 - (UIEdgeInsets)themeEdgeInsetsForKey:(NSString *)key
 {
-    return [self.theme edgeInsetsForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    NSString *string = (NSString *)[self themeValueForKey:key];
+    if (string)
+    {
+        return UIEdgeInsetsFromString(string);
+    }
+    
+    return UIEdgeInsetsZero;
 }
 
 - (UIFont *)themeFontForKey:(NSString *)key
 {
-    return [self.theme fontForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    Class class = [self class];
+    
+    while (class != [NSObject class])
+    {
+        UIFont *font = [self.theme fontForKey:[NSStringFromClass(class) stringByAppendingFormat:@".%@", key]];
+        if (font)
+        {
+            return font;
+        }
+        
+        class = [class superclass];
+    }
+    
+    return nil;
 }
 
 - (CGPoint)themePointForKey:(NSString *)key
 {
-    return [self.theme pointForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    NSString *string = (NSString *)[self themeValueForKey:key];
+    if (string)
+    {
+        return CGPointFromString(string);
+    }
+    
+    return CGPointZero;
 }
 
 - (CGSize)themeSizeForKey:(NSString *)key
 {
-    return [self.theme sizeForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    NSString *string = (NSString *)[self themeValueForKey:key];
+    if (string)
+    {
+        return CGSizeFromString(string);
+    }
+    
+    return CGSizeZero;
 }
 
 - (NSTimeInterval)themeTimeIntervalForKey:(NSString *)key
 {
-    return [self.theme timeIntervalForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    id obj = [self themeValueForKey:key];
+    if (obj)
+    {
+        return [obj doubleValue];
+    }
+    
+    return 0.0;
 }
 
 - (UIViewAnimationOptions)themeCurveForKey:(NSString *)key
 {
-    return [self.theme curveForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    Class class = [self class];
+    
+    while (class != [NSObject class])
+    {
+        NSString *string = (NSString *)[self themeValueForKey:key];
+        if (string)
+        {
+            return [self.theme curveForKey:[NSStringFromClass(class) stringByAppendingFormat:@".%@", key]];
+        }
+        
+        class = [class superclass];
+    }
+    
+    return (UIViewAnimationOptions)0;
 }
 
 - (VSAnimationSpecifier *)themeAnimationSpecifierForKey:(NSString *)key
 {
-    return [self.theme animationSpecifierForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    Class class = [self class];
+    
+    while (class != [NSObject class])
+    {
+        NSString *string = (NSString *)[self themeValueForKey:key];
+        if (string)
+        {
+            return [self.theme animationSpecifierForKey:[NSStringFromClass(class) stringByAppendingFormat:@".%@", key]];
+        }
+        
+        class = [class superclass];
+    }
+    
+    return nil;
 }
 
 - (VSTextCaseTransform)themeTextCaseTransformForKey:(NSString *)key
 {
-    return [self.theme textCaseTransformForKey:[NSStringFromClass([self class]) stringByAppendingFormat:@".%@", key]];
+    Class class = [self class];
+    
+    while (class != [NSObject class])
+    {
+        NSString *string = (NSString *)[self themeValueForKey:key];
+        if (string)
+        {
+            return [self.theme textCaseTransformForKey:[NSStringFromClass(class) stringByAppendingFormat:@".%@", key]];
+        }
+        
+        class = [class superclass];
+    }
+    
+    return VSTextCaseTransformNone;
 }
 
 @end

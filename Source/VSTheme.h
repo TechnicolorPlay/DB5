@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, weak) VSTheme *parentTheme; /*can inherit*/
 
+- (id)objectForKey:(NSString *)key;
 - (BOOL)boolForKey:(NSString *)key;
 - (NSString *)stringForKey:(NSString *)key;
 - (NSInteger)integerForKey:(NSString *)key;

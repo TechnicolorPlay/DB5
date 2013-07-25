@@ -132,13 +132,13 @@ static UIColor *colorWithHexString(NSString *hexString);
 
 - (UIEdgeInsets)edgeInsetsForKey:(NSString *)key {
 
-	CGFloat left = [self floatForKey:[key stringByAppendingString:@"Left"]];
-	CGFloat top = [self floatForKey:[key stringByAppendingString:@"Top"]];
-	CGFloat right = [self floatForKey:[key stringByAppendingString:@"Right"]];
-	CGFloat bottom = [self floatForKey:[key stringByAppendingString:@"Bottom"]];
-
-	UIEdgeInsets edgeInsets = UIEdgeInsetsMake(top, left, bottom, right);
-	return edgeInsets;
+    NSString *string = [self stringForKey:key];
+    if (string)
+    {
+        return UIEdgeInsetsFromString(string);
+    }
+    
+    return UIEdgeInsetsZero;
 }
 
 
@@ -172,21 +172,25 @@ static UIColor *colorWithHexString(NSString *hexString);
 
 - (CGPoint)pointForKey:(NSString *)key {
 
-	CGFloat pointX = [self floatForKey:[key stringByAppendingString:@"X"]];
-	CGFloat pointY = [self floatForKey:[key stringByAppendingString:@"Y"]];
-
-	CGPoint point = CGPointMake(pointX, pointY);
-	return point;
+    NSString *string = [self stringForKey:key];
+    if (string)
+    {
+        return CGPointFromString(string);
+    }
+    
+    return CGPointZero;
 }
 
 
 - (CGSize)sizeForKey:(NSString *)key {
 
-	CGFloat width = [self floatForKey:[key stringByAppendingString:@"Width"]];
-	CGFloat height = [self floatForKey:[key stringByAppendingString:@"Height"]];
-
-	CGSize size = CGSizeMake(width, height);
-	return size;
+	NSString *string = [self stringForKey:key];
+    if (string)
+    {
+        return CGSizeFromString(string);
+    }
+    
+    return CGSizeZero;
 }
 
 
