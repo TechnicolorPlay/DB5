@@ -122,7 +122,7 @@ static UIColor *colorWithHexString(NSString *hexString);
 	NSString *colorString = [self stringForKey:key];
 	UIColor *color = colorWithHexString(colorString);
 	if (color == nil)
-		color = [UIColor blackColor];
+		return nil;
 
 	[self.colorCache setObject:color forKey:key];
 
@@ -274,7 +274,7 @@ static UIColor *colorWithHexString(NSString *hexString) {
 	/*Picky. Crashes by design.*/
 	
 	if (stringIsEmpty(hexString))
-		return [UIColor blackColor];
+		return nil;
 
 	NSMutableString *s = [hexString mutableCopy];
 	[s replaceOccurrencesOfString:@"#" withString:@"" options:0 range:NSMakeRange(0, [hexString length])];
