@@ -28,4 +28,10 @@
 - (VSAnimationSpecifier *)themeAnimationSpecifierForKey:(NSString *)key;
 - (VSTextCaseTransform)themeTextCaseTransformForKey:(NSString *)key;
 
+- (CGFloat)themeGridBasis;
+- (CGFloat)themeGridFloatForKey:(NSString *)key;
+- (UIEdgeInsets)themeGridEdgeInsetsForKey:(NSString *)key;
+- (CGPoint)themeGridPointForKey:(NSString *)key;
+- (CGSize)themeGridSizeForKey:(NSString *)key;
+
 @end

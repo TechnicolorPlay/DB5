@@ -104,4 +104,39 @@ static char const * const kVSThemeKey = "kVSTheme";
     return [self.theme textCaseTransformForKey:[NSStringFromClass([self class]) stringByAppendingString:key]];
 }
 
+- (CGFloat)themeGridBasis
+{
+    return [self.theme floatForKey:@"gridBasis"];
+}
+
+- (CGFloat)themeGridFloatForKey:(NSString *)key
+{
+    CGFloat gridSize = [self themeGridBasis];
+    return gridSize * [self themeFloatForKey:key];
+}
+
+- (UIEdgeInsets)themeGridEdgeInsetsForKey:(NSString *)key
+{
+    CGFloat gridSize = [self themeGridBasis];
+    UIEdgeInsets insets = [self themeEdgeInsetsForKey:key];
+    
+    return UIEdgeInsetsMake(insets.top * gridSize, insets.left * gridSize, insets.bottom * gridSize, insets.right * gridSize);
+}
+
+- (CGPoint)themeGridPointForKey:(NSString *)key
+{
+    CGFloat gridSize = [self themeGridBasis];
+    CGPoint point = [self themePointForKey:key];
+    
+    return CGPointMake(point.x * gridSize, point.y * gridSize);
+}
+
+- (CGSize)themeGridSizeForKey:(NSString *)key
+{
+    CGFloat gridSize = [self themeGridBasis];
+    CGSize size = [self themeSizeForKey:key];
+    
+    return CGSizeMake(gridSize * size.width, gridSize * size.height);
+}
+
 @end
