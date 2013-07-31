@@ -1,18 +1,19 @@
 //
-//  UIBarItem+VSTheme.m
+//  UIView+VSTheme.m
 //  NeonEngine
 //
-//  Created by Eric Robinson on 7/26/13.
+//  Created by Eric Robinson on 7/2/13.
 //  Copyright (c) 2013 groupneon. All rights reserved.
 //
 
-#import "UIBarItem+VSTheme.h"
-#import <objc/runtime.h>
+#import "NSObject+VSTheme.h"
 #import "VSThemeLoader.h"
+#import <objc/runtime.h>
 
 static char const * const kVSThemeKey = "kVSTheme";
 
-@implementation UIBarItem (VSTheme)
+
+@implementation NSObject (VSTheme)
 
 @dynamic theme;
 

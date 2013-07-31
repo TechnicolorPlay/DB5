@@ -1,5 +1,5 @@
 //
-//  UIViewController+VSTheme.h
+//  UIView+VSTheme.h
 //  NeonEngine
 //
 //  Created by Eric Robinson on 7/2/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VSTheme.h"
 
-@interface UIViewController (VSTheme)
+@interface NSObject (VSTheme)
 
 @property(nonatomic, strong, readwrite) VSTheme* theme;
 
