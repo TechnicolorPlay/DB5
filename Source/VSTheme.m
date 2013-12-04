@@ -94,6 +94,14 @@ static UIColor *colorWithHexString(NSString *hexString);
 }
 
 
+- (NSArray *)arrayForKey:(NSString *)key
+{
+    id obj = [self objectForKey:key];
+    if ([obj isKindOfClass:[NSArray class]])
+        return obj;
+    return nil;
+}
+
 - (NSTimeInterval)timeIntervalForKey:(NSString *)key {
 
 	id obj = [self objectForKey:key];

@@ -73,6 +73,11 @@ static char const * const kVSThemeKey = "kVSTheme";
     return [[self themeValueForKey:key] floatValue];
 }
 
+- (NSArray *)themeArrayForKey:(NSString *)key
+{
+    return [self themeValueForKey:key];
+}
+
 - (UIImage *)themeImageForKey:(NSString *)key
 {
     Class class = [self class];

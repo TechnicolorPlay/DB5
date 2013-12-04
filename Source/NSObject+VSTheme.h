@@ -17,6 +17,7 @@
 - (NSString *)themeStringForKey:(NSString *)key;
 - (NSInteger)themeIntegerForKey:(NSString *)key;
 - (CGFloat)themeFloatForKey:(NSString *)key;
+- (NSArray *)themeArrayForKey:(NSString *)key;
 - (UIImage *)themeImageForKey:(NSString *)key;
 - (UIColor *)themeColorForKey:(NSString *)key;
 - (UIEdgeInsets)themeEdgeInsetsForKey:(NSString *)key;
