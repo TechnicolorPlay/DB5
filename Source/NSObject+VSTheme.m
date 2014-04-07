@@ -8,6 +8,7 @@
 
 #import "NSObject+VSTheme.h"
 #import "VSThemeLoader.h"
+#import "VSThemeCache.h"
 #import <objc/runtime.h>
 
 static char const * const kVSThemeKey = "kVSTheme";
@@ -24,15 +25,7 @@ static char const * const kVSThemeKey = "kVSTheme";
 
 - (VSTheme*)theme
 {
-    id theme = objc_getAssociatedObject(self, kVSThemeKey);
-    if(theme == nil)
-    {
-        VSThemeLoader* loader = [[VSThemeLoader alloc] init];
-        theme = [loader defaultTheme];
-        self.theme = theme;
-    }
-    
-    return theme;
+    return [VSThemeCache sharedThemeCache].theme;
 }
 
 - (id)themeValueForKey:(NSString *)key
