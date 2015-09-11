@@ -33,7 +33,7 @@
     self = [super init];
     if(self)
     {
-        DLog(@"LOADING DB5");
+        NSLog(@"LOADING DB5");
         VSThemeLoader* loader = [[VSThemeLoader alloc] init];
         self.theme = [loader defaultTheme];
     }
